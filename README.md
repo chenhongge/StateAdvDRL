@@ -12,7 +12,7 @@ theoretically principled robustness regularizers for **PPO**, **DDPG** and
 and DDPG, the maximal action difference (MAD) attack and the **robust sarsa
 (RS) attack**. More details can be found in our paper:
 
-*Huan Zhang\*, Hongge Chen\*, Chaowei Xiao, Mingyan Liu, Bo Li, Duane Boning,* and *Cho-Jui Hsieh*, "Robust Deep Reinforcement Learning against Adversarial Perturbations on Observations", [arxiv.org/abs/2003.08938](http://arxiv.org/abs/2003.08938) (\* Equal contribution)
+*Huan Zhang\*, Hongge Chen\*, Chaowei Xiao, Mingyan Liu, Bo Li, Duane Boning,* and *Cho-Jui Hsieh*, "Robust Deep Reinforcement Learning against Adversarial Perturbations on Observations", (NeurIPS 2020, Spotlight) [arxiv.org/abs/2003.08938](http://arxiv.org/abs/2003.08938) (\* Equal contribution)
 
 ## Robust Deep Reinforcement Learning Demos (SA-DQN, SA-DDPG and SA-PPO)
 
