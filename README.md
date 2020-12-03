@@ -12,7 +12,11 @@ theoretically principled robustness regularizers for **PPO**, **DDPG** and
 and DDPG, the maximal action difference (MAD) attack and the **robust sarsa
 (RS) attack**. More details can be found in our paper:
 
-*Huan Zhang\*, Hongge Chen\*, Chaowei Xiao, Mingyan Liu, Bo Li, Duane Boning,* and *Cho-Jui Hsieh*, "Robust Deep Reinforcement Learning against Adversarial Perturbations on Observations", [arxiv.org/abs/2003.08938](http://arxiv.org/abs/2003.08938) (\* Equal contribution). **This paper has been accepted by NeurIPS 2020  as a spotlight presentation.**
+*Huan Zhang\*, Hongge Chen\*, Chaowei Xiao, Mingyan Liu, Bo Li, Duane Boning,*
+and *Cho-Jui Hsieh*, "Robust Deep Reinforcement Learning against Adversarial
+Perturbations on Observations", [**NeurIPS 2020
+(Spotlight)**](https://proceedings.neurips.cc/paper/2020/file/f0eb6568ea114ba6e293f903c34d7488-Paper.pdf)
+(\*Equal contribution).  
 
 ## Robust Deep Reinforcement Learning Demos (SA-DQN, SA-DDPG and SA-PPO)
 
@@ -35,11 +39,11 @@ Reference implementation for SA-DQN can be found at [https://github.com/chenhong
 
 Reference implementation for SA-PPO can be found at [https://github.com/huanzhang12/SA_PPO](https://github.com/huanzhang12/SA_PPO).
 
-We are finalizing the reference implementation for SA-DDPG and it will be released soon.
+Reference implementation for SA-DDPG can be found at [https://github.com/huanzhang12/SA_DDPG](https://github.com/huanzhang12/SA_DDPG).
 
-## Pretrained model performance
+## Pretrained agents performance
 
-### Pretrained DQN models 
+### Pretrained DQN agents 
 
 | Environment | Evaluation         | Vanilla DQN | SA-DQN (convex relaxation) |
 |-------------|--------------------|:-----------:|:--------------------------:|
@@ -58,36 +62,46 @@ We are finalizing the reference implementation for SA-DDPG and it will be releas
 
 See our [SA-DQN repository](https://github.com/chenhongge/SA_DQN) for more details.
 
-### Pretrained PPO models 
+### Pretrained PPO agents 
+
+We repeatedly train each agent configuration at least 15 times, and rank them
+with their average cumulative rewards over 50 episodes under the strongest
+attack (among 5 attacks used). We report the performance for agents with
+**median** robustnes (we do not cherry-pick the best agents).
 
 | Environment | Evaluation                                 | Vanilla PPO | SA-PPO (convex) | SA-PPO (SGLD) |
 |-------------|--------------------------------------------|-------------|-----------------|---------------|
-| Walker2d-v2 | No attack                                  | 3357        | 3552            | 3917          |
-|             | No attack (deterministic action)           | 3081        | **4939**        | 4617          |
-|             | Robust Sarsa attack                        | 571         | 2496            | 1733          |
-|             | Robust Sarsa attack (deterministic action) | 550         | **4700**        | 1999          |
-| Hopper-v2   | No attack                                  | 2576        | 2261            | 2436          |
-|             | No attack (deterministic action)           | 3574        | 3524            | **3698**      |
-|             | Robust Sarsa attack                        | 635         | 1066            | 1086          |
-|             | Robust Sarsa attack (deterministic action) | 617         | **1463**        | 1044          |
-| Humanoid-v2 | No attack                                  | 2269        | 5067            | 5392          |
-|             | No attack (deterministic action)           | 2008        | 6339            | **6760**      |
-|             | Robust Sarsa attack                        | 637         | 4251            | 3848          |
-|             | Robust Sarsa attack (deterministic action) | 567         | **5954**        | 5690          |
-
-
-In our paper, we reported the performance on non-deterministic actions (where
-we still sample from Gaussian distributions during evaluation). However, a more
-appropriate evaluation procedure is to use deterministic action without noise
-during evaluation, which improves performance significantly. **Thus the results
-reported in our paper (Table 1) are too pessimistic,** and please refer to the
-**deterministic action** rows in the table above for more accurate results
-under the correct evaluation protocol (we will update numbers on our paper in a
-later revision).
+| Humanoid-v2 | No attack                                  |   5270.6    |     6400.6      |     6624.0    |
+|             | Strongest attack                           |   884.1     |     4690.3      |    **6073.8** |
+| Walker2d-v2 | No attack                                  |   4619.5    |     4486.6      |    4911.8     |
+|             | Strongest attack                           |   913.7     |     2076.1      |    **2468.4** |
+| Hopper-v2   | No attack                                  |   3167.6    |     3704.1      |    3523.1     |
+|             | Strongest attack                           |   733       |     1224.2      |    **1403.3** |
 
 See our [SA-PPO repository](https://github.com/huanzhang12/SA_PPO) for more details.
 
-### Pretrained DDPG models
+### Pretrained DDPG agents
 
-(will be released soon)
+We attack each agent with 5 different attacks (random attack, critic attack,
+MAD attack, RS attack and RS+MAD attack). Here we report the lowest reward of
+all 5 attacks in "Strongest attack" rows. Additionally, we train each setting
+11 times and we report the agent with median robustness (we do not cherry-pick
+the best results). This is important due to the potential large training
+variance in RL.
+
+
+| Environment         | Evaluation       | Vanilla DDPG | SA-DDPG (SGLD) | SA-DDPG (convex) |
+|---------------------|------------------|--------------|----------------|-----------------------------|
+| Ant-v2              | No attack        | 1487         | 2186           | 2254                        |
+|                     | Strongest attack | 142          | **2007**       | 1820                        |
+| Walker2d-v2         | No attack        | 1870         | 3318           | 4540                        |
+|                     | Strongest attack | 790          | 1210           | **1986**                    |
+| Hopper-v2           | No attack        | 3302         | 3068           | 3128                        |
+|                     | Strongest attack | 606          | **1609**       | 1202                        |
+| Reacher-v2          | No attack        | -4.37        | -5.00          | -5.24                       |
+|                     | Strongest attack | -27.87       | **-12.10**     | -12.44                      |
+| InvertedPendulum-v2 | No attack        | 1000         | 1000           | 1000                        |
+|                     | Strongest attack | 92           | 423            | **1000**                    |
+
+See our [SA-DDPG repository](https://github.com/huanzhang12/SA_DDPG) for more details.
 
