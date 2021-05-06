@@ -14,9 +14,16 @@ and DDPG, the maximal action difference (MAD) attack and the **robust sarsa
 
 *Huan Zhang\*, Hongge Chen\*, Chaowei Xiao, Mingyan Liu, Bo Li, Duane Boning,*
 and *Cho-Jui Hsieh*, "Robust Deep Reinforcement Learning against Adversarial
-Perturbations on Observations", [**NeurIPS 2020
+Perturbations on Observations" (\*Equal contribution)  
+[**NeurIPS 2020
 (Spotlight)**](https://proceedings.neurips.cc/paper/2020/file/f0eb6568ea114ba6e293f903c34d7488-Paper.pdf)
-(\*Equal contribution).  
+
+Please also **checkout our new work** on **optimal adversary** and **alternating
+training of learned adversary and agent (ATLA)** for a robust RL agent:
+
+*Huan Zhang\*, Hongge Chen\*, Duane Boning,*
+and *Cho-Jui Hsieh*, "Robust Reinforcement Learning on State Observations with Learned Optimal Adversary" (\*Equal contribution)    
+[**ICLR 2020**](https://proceedings.neurips.cc/paper/2020/file/f0eb6568ea114ba6e293f903c34d7488-Paper.pdf) [(Code)](https://github.com/huanzhang12/ATLA_robust_RL)
 
 ## Robust Deep Reinforcement Learning Demos (SA-DQN, SA-DDPG and SA-PPO)
 
