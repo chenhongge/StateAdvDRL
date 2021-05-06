@@ -23,7 +23,7 @@ training of learned adversary and agent (ATLA)** for a robust RL agent:
 
 *Huan Zhang\*, Hongge Chen\*, Duane Boning,*
 and *Cho-Jui Hsieh*, "Robust Reinforcement Learning on State Observations with Learned Optimal Adversary" (\*Equal contribution)    
-[**ICLR 2020**](https://proceedings.neurips.cc/paper/2020/file/f0eb6568ea114ba6e293f903c34d7488-Paper.pdf) [(Code)](https://github.com/huanzhang12/ATLA_robust_RL)
+[**ICLR 2020**](https://arxiv.org/pdf/2101.08452.pdf) [(Code)](https://github.com/huanzhang12/ATLA_robust_RL)
 
 ## Robust Deep Reinforcement Learning Demos (SA-DQN, SA-DDPG and SA-PPO)
 
